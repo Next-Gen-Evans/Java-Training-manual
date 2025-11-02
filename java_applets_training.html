@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Java Applets — Training Manual</title>
+  <style>
+    body { font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; line-height:1.6; padding:24px; background:#f7f8fb; color:#0b1220; }
+    header { background: #0b5cff; color: white; padding:20px; border-radius:8px; margin-bottom:20px; }
+    h1,h2,h3 { margin: 0 0 12px 0; }
+    .card { background:white; padding:18px; border-radius:8px; box-shadow:0 6px 18px rgba(12,20,40,0.06); margin-bottom:14px; }
+    pre { background:#0f1724; color:#d1fae5; padding:12px; border-radius:6px; overflow:auto; }
+    code { font-family: Menlo, Monaco, "Courier New", monospace; }
+    ul{ margin:6px 0 12px 20px; }
+    footer{ margin-top:18px; font-size:0.9em; color:#5b6570; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Java Applets — Training Manual</h1>
+    <p>Short training material explaining Java Applets: basics, lifecycle, sample code and practical notes.</p>
+  </header>
+
+  <section class="card">
+    <h2>What is a Java Applet?</h2>
+    <p>A Java Applet is a small Java program that used to run in a web browser via the Java plugin. Applets extend <code>java.applet.Applet</code> (or nowadays, <code>javax.swing.JApplet</code>) and provide a graphical interface inside a browser page.</p>
+    <p><strong>Note:</strong> Modern browsers no longer support the Java browser plugin. Applets are deprecated and largely replaced by other technologies (Java Web Start, standalone Java apps, web technologies).</p>
+  </section>
+
+  <section class="card">
+    <h2>Applet Lifecycle</h2>
+    <ul>
+      <li><strong>init()</strong> — Initialization, called once when the applet is first loaded.</li>
+      <li><strong>start()</strong> — Called after <code>init()</code> and each time the applet becomes active (e.g., user returns to the page).</li>
+      <li><strong>paint(Graphics g)</strong> — Called whenever the applet needs to redraw its content.</li>
+      <li><strong>stop()</strong> — Called when the applet is no longer visible (e.g., user navigates away).</li>
+      <li><strong>destroy()</strong> — Cleanup before the applet is unloaded.</li>
+    </ul>
+  </section>
+
+  <section class="card">
+    <h2>Basic Applet Example</h2>
+    <p>Below is a simple applet that displays "Hello, Applet!" — legacy-style.</p>
+    <pre><code>// HelloApplet.java
+import java.applet.Applet;
+import java.awt.Graphics;
+
+public class HelloApplet extends Applet {
+    public void init() {
+        // initialization code
+    }
+    public void paint(Graphics g) {
+        g.drawString("Hello, Applet!", 20, 20);
+    }
+}
+    </code></pre>
+    <p>HTML tag (legacy) to embed an applet (obsolete):</p>
+    <pre><code>&lt;applet code="HelloApplet.class" width="300" height="100"&gt;
+  &lt;!-- fallback content --&gt;
+&lt;/applet&gt;</code></pre>
+  </section>
+
+  <section class="card">
+    <h2>Advantages &amp; Disadvantages</h2>
+    <h3>Advantages</h3>
+    <ul>
+      <li>Platform-independent UI using Java.</li>
+      <li>Easy to embed Java code in web pages (historically).</li>
+    </ul>
+    <h3>Disadvantages</h3>
+    <ul>
+      <li>Requires browser plugin — now unsupported by major browsers.</li>
+      <li>Security restrictions (sandbox) limit functionality.</li>
+      <li>Deprecated and discouraged for modern web development.</li>
+    </ul>
+  </section>
+
+  <section class="card">
+    <h2>Transition path for legacy applets</h2>
+    <p>If you maintain legacy applets, consider:</p>
+    <ul>
+      <li>Converting to a standalone Java application (Swing/JavaFX).</li>
+      <li>Using Java Web Start (JNLP) where supported, or packaging as an executable JAR.</li>
+      <li>Rewriting UI using modern web technologies (HTML5/JS) and backend services.</li>
+    </ul>
+  </section>
+
+  <section class="card">
+    <h2>Practical Tips</h2>
+    <ul>
+      <li>Keep applet code simple and UI code separate from logic.</li>
+      <li>Use <code>repaint()</code> carefully to avoid CPU-heavy loops.</li>
+      <li>Test in legacy environments if you must support applets (old Java Runtime + old browser).</li>
+    </ul>
+  </section>
+
+  <section class="card">
+    <h2>Further Reading &amp; References</h2>
+    <ul>
+      <li>Oracle Java Applet documentation (archived)</li>
+      <li>Java Swing and JavaFX migration guides</li>
+      <li>Security notes on Java sandboxing</li>
+    </ul>
+  </section>
+
+  <footer>
+    <p>Prepared by: Evans Mutharimi Buongo — Java Applets training package</p>
+  </footer>
+</body>
+</html>
